@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+
+<body onload="onInit()">
+
+    <h1> Minesweeper </h1>
+
+    <button class="smiley-btn" onclick="onInit()">😃</button>
+    
+    <div class="board-container" ></div>
+    
+    <div class="difficulty">
+        <h4> Choose your difficulty</h4> 
+        <button class="btn-diff" data-size="4" data-mine="2" onclick="onDifficultyClick(this)">Beginner</button>
+        <button class="btn-diff" data-size="8" data-mine="14" onclick="onDifficultyClick(this)">Medium</button>
+        <button class="btn-diff" data-size="12" data-mine="32" onclick="onDifficultyClick(this)">Expert</button>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

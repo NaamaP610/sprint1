@@ -1,0 +1,95 @@
+body {
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1{
+    color:rgb(176, 146, 241); ;
+    font-size: 3em;
+}
+
+table {
+	margin: 50px auto;
+	border: 1px solid gray;
+    color: black;
+    background-color: la;
+}
+
+td {
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    width: 30px;
+	height: 30px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+td:hover{
+    background-color: lavender;
+}
+
+td.revealed:hover{
+    background-color: inherit;
+    transition: none;
+}
+
+.cell {
+	text-align: center;
+	font-size: 1em;
+}
+
+.covered {
+    background-color: lightgray;
+    color: transparent;
+    cursor: pointer;
+}
+
+.revealed{
+    background-color: whitesmoke;
+}
+
+.flagged{
+    background-color: lightpink;
+}
+
+.mine{
+    background-color: rgb(108, 70, 155);
+
+}
+
+td.mine:hover{
+    background-color: rgb(108, 70, 155);
+    transition: none;
+}
+
+.smiley-btn{
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+}
+
+button{
+    cursor: pointer;
+}
+
+.btn-diff{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(201, 187, 228);
+    cursor: pointer;
+    /* font-style:italic; */
+    border: 1px solid black;
+}
+
+.difficulty {
+    width: 300px;
+    margin: auto;
+    background-color: lavender;
+    border-radius: 20px;
+    margin-top: 15px;
+    border: solid;
+    border: 1px solid black;
+}
