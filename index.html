@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minesweeper!</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 
@@ -13,18 +13,19 @@
 
     <h1> Minesweeper </h1>
 
-    <button class="smiley-btn" onclick="onInit()">😃</button>
+    <p class="difficulty"><button class="smiley-btn" onclick="onInit()">😃</button></p> 
     
-    <div class="board-container" ></div>
+    <div class="board-container"></div>
     
-    <div class="difficulty">
-        <h4> Choose your difficulty</h4> 
+    <p class="difficulty">
+        <span> Choose your difficulty </span>
         <button class="btn-diff" data-size="4" data-mine="2" onclick="onDifficultyClick(this)">Beginner</button>
         <button class="btn-diff" data-size="8" data-mine="14" onclick="onDifficultyClick(this)">Medium</button>
         <button class="btn-diff" data-size="12" data-mine="32" onclick="onDifficultyClick(this)">Expert</button>
-    </div>
+    </p>
 
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
