@@ -76,29 +76,13 @@ button {
     transition: background-color 0.5s ease-in-out;
 }
 
-.smiley-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5em;
-    background-color: rgb(201, 187, 228);
-    border-radius: 5px;
-    border: 0px;
-}
-
-.smiley-btn:hover{
-    background-color: rgb(163, 163, 245);
-}
 
 .difficulty {
-    /* width: 300px; */
-    /* margin: auto; */
     margin-top: 5px;
     padding: 10px;
     background-color: lavender;
-    /* border-radius: 20px; */
     border: 0px;
     font-size: 15px;
-    /* border: 1px solid black; */
 }
 
 .difficulty span{
@@ -116,5 +100,28 @@ button {
 }
 
 .btn-diff:hover{
+    background-color: rgb(163, 163, 245);
+}
+
+.top{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: lavender;
+    border: 0px;
+    /* font-size: 15px; */
+}
+
+
+.smiley-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    background-color: rgb(201, 187, 228);
+    border-radius: 5px;
+    border: 0px;
+    margin-top: 5px;
+}
+
+.smiley-btn:hover{
     background-color: rgb(163, 163, 245);
 }

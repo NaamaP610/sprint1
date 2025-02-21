@@ -9,10 +9,11 @@ var gLevel = {
 
 const gGame = {
     isOn: false,
-    coveredCount: 0,
+    uncoveredCount: 0,
     markedCount: 0,
     secsPassed: 0,
     isFirstClick: true,
+    livesCount: 3,
 }
 
 function onInit() {
@@ -20,12 +21,15 @@ function onInit() {
     renderBoard(gBoard, '.board-container')
 
     gGame.isOn = true
-    gGame.coveredCount = 0
+    gGame.uncoveredCount = 0
     gGame.markedCount = 0
     gGame.isFirstClick = true
+    gGame.livesCount = 3
 
     var elSmileyBt = document.querySelector('.smiley-btn')
     elSmileyBt.innerText = '😃'
+
+    updateLives()
 
 }
 
@@ -53,22 +57,40 @@ function onCellClicked(event, i, j) {
     var elCell = document.querySelector(`.cell-${i}-${j}`)
     var cerCell = gBoard[i][j]
 
-    if (event.button === 0 && !gBoard[i][j].isMarked) {
+    if (event.button === 0 && !cerCell.isMarked) {
         onCellRevel(elCell, i, j)
         expandUncover(gBoard, i, j)
-        if (cerCell.isMine) {
+
+        if (gGame.livesCount > 1) {
+            if (cerCell.isMine) {
+                setTimeout(() => {
+                    elCell.classList.remove('revealed')
+                    elCell.classList.add('covered')
+                    cerCell.isCovered = true
+                }, 500);
+
+                gGame.uncoveredCount--
+                gGame.livesCount--
+                updateLives()
+            }
+        } else {
+            if (!cerCell.isMine) return
+            updateLives()
             exposeMines(gBoard)
             checkGameOver(false)
         }
+
 
     } else if (event.button === 2) {
         onCellMarked(elCell, i, j)
     }
 
     var totalSafeCells = (gLevel.SIZE ** 2) - gLevel.MINES
-    if (gGame.coveredCount === totalSafeCells && countMarkedMinds(gBoard)) {
+
+    if (gGame.uncoveredCount === totalSafeCells && countMarkedMinds(gBoard)) {
         checkGameOver(true)
     }
+
 }
 
 function handelFirstClick(i, j) {
@@ -110,10 +132,16 @@ function onCellRevel(elCell, i, j) {
     if (gBoard[i][j].isMarked) return
     if (!gBoard[i][j].isCovered) return
     gBoard[i][j].isCovered = false
-    gGame.coveredCount++
+    gGame.uncoveredCount++
 
     elCell.classList.remove('covered')
     elCell.classList.add('revealed')
+}
+
+function onMineCover(elCell, cerCell) {
+    elCell.classList.remove('revealed')
+    elCell.classList.add('covered')
+    cerCell.isCovered = true
 }
 
 function expandUncover(board, i, j) {
@@ -148,9 +176,9 @@ function countMarkedMinds(board) {
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board.length; j++) {
             if (board[i][j].isMine && !board[i][j].isMarked) return false
+            if (!board[i][j].isMine && board[i][j].isMarked) return false
         }
     }
-
     return true
 }
 
@@ -186,4 +214,8 @@ function onDifficultyClick(elBtn) {
     onInit()
 }
 
+function updateLives() {
+    const elLives = document.querySelector('.lives')
+    elLives.innerHTML = '❤️'.repeat(gGame.livesCount)
+}
 
